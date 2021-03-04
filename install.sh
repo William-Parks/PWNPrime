@@ -148,7 +148,7 @@ echo "Installing Visual Packages Now..."
 echo ""
 echo "vim (vim-airline) Package"
 mkdir -p ~/.vim/pack/vendor/start
-git clone https://github.com/vim-airline/vim-airline ~/.vim/pack/vendor/start/
+git clone https://github.com/vim-airline/vim-airline ~/.vim/pack/vendor/start/airline
 mv ~/.vim/pack/vendor/start/vim-airline ~/.vim/pack/vendor/start/airline
 touch ~/.vim/pack/vendor/start/setup.txt
 echo "To fully install the airline package (or any package), just clone a github repo to here and run the ':packadd' followed by the package name. Example: ':packadd airline'. After that is done, open up vim and run the command ':helptags ALL' to install all of the packages that you have enabled and their respective commands." > ~/.vim/pack/vendor/start/setup.txt
@@ -205,5 +205,5 @@ echo "- William P. (OfficialWilliP)"
 
 echo ""
 
-echo "Waiting for 10 seconds..."
+echo "Waiting 5 seconds"
 sleep 5
