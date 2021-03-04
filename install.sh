@@ -21,10 +21,10 @@ Enjoy the script and happy hacking! Cheers from the 'coffee guy'!
 --William P. (OfficialWilliP)
 "
 ## Kali Linux Update, Upgrade, Remove, and Clean
-# sudo apt -y update && sudo apt -y upgrade && sudo apt -y autoremove && sudo apt -y autoclean
+sudo apt -y update && sudo apt -y upgrade && sudo apt -y autoremove && sudo apt -y autoclean
 
 ## Pimp My Kali
-# git clone https://github.com/Dewalt-arch/pimpmykali.git ~/Desktop/tools/pimpit/pimpmykali
+git clone https://github.com/Dewalt-arch/pimpmykali.git ~/Desktop/tools/pimpit/pimpmykali
 
 ## Create Directories
 mkdir -p ~/Desktop/tools/
@@ -47,7 +47,7 @@ echo "Rust Scan"
 wget https://github.com/RustScan/RustScan/releases/download/2.0.1/rustscan_2.0.1_amd64.deb -O ~/Desktop/tools/web/rustscan_2.0.1_amd64.deb
 sudo apt install -y ~/Desktop/tools/web/rustscan_2.0.1_amd64.deb
 rm -f ~/Desktop/tools/web/rustscan_2.0.1_amd64.deb
-touch RustScan_Installed
+touch ~/Desktop/tools/web/RustScan_Installed.txt
 echo "Done!"
 
 echo ""
@@ -55,10 +55,10 @@ echo "feroxbuster"
 ##	feroxbuster
 ##		Downloads the amd64.deb package and runs `sudo apt install [PKGNAME].deb`
 wget https://github.com/epi052/feroxbuster/releases/download/v2.0.0/feroxbuster_amd64.deb.zip -O ~/Desktop/tools/web/feroxbuster_amd64.deb.zip
-unzip ~/Desktop/tools/web/feroxbuster_amd64.deb.zip
-sudo apt install -y ~/Desktop/tools/web/feroxbuster_amd64.deb
-rm -f ~/Desktop/tools/web/feroxbuster_amd64.deb ~/Desktop/tools/web/feroxbuster_amd64.deb.zip
-touch FerroxBuster_Installed
+unzip ~/Desktop/tools/web/feroxbuster_amd64.deb.zip -d ~/Desktop/tools/web/
+sudo apt install -y ~/Desktop/tools/web/feroxbuster_2.0.0_amd64.deb
+rm -f ~/Desktop/tools/web/feroxbuster_2.0.0_amd64.deb ~/Desktop/tools/web/feroxbuster_amd64.deb.zip
+touch ~/Desktop/tools/web/FerroxBuster_Installed.txt
 echo "Done!"
 
 echo ""
@@ -68,12 +68,6 @@ if pip3 install name-that-hash; then
 echo "Installing using pip3"
 echo "Successfully Installed"
 else
-echo "Not Installed... Trying pip"
-fi
-if pip install name-that-hash; then
-echo "Installing using pip"
-echo "Successfully Installed"
-else
 echo "name-that-hash not installed..."
 fi
 echo "Done!"
@@ -81,7 +75,7 @@ echo "Done!"
 echo ""
 echo "ffuf"
 ##	ffuf
-go get -u https://github.com/ffuf/ffuf.git
+apt install ffuf
 echo "Done!"
 
 echo ""
@@ -95,8 +89,8 @@ echo "Done!"
 echo ""
 echo "Crackstation Wordlists"
 ##	Crack station wordlists
-wget https://crackstation.net/files/crackstation-human-only.txt.gz ~/Desktop/tools/wordlists/crackstation-human-only.txt.gz
-tar -xf ~/Desktop/tools/wordlists/crackstation-human-only.txt.gz
+wget https://crackstation.net/files/crackstation-human-only.txt.gz -O ~/Desktop/tools/wordlists/crackstation-human-only.txt.gz
+gzip ~/Desktop/tools/wordlists/crackstation-human-only.txt.gz
 echo "Done!"
 
 echo ""
@@ -113,7 +107,7 @@ echo "Terminal Tools Installing Now..."
 echo "tmux redesign"
 ##	Oh My Tmux
 git clone https://github.com/gpakosz/.tmux.git ~/Desktop/tools/terminal/tmux
-cp .tmux.conf ~/Desktop/tools/tmux/.tmux.conf
+cp ~/Desktop/tools/terminal/tmux/.tmux.conf ~
 echo "Done!"
 
 
@@ -124,22 +118,31 @@ echo "Emacs"
 apt install emacs
 echo "Done!"
 
-echo ""
-echo "Doom Emacs"
+#echo ""
+#echo "Doom Emacs"
 ##	Doom Emacs
 ##		Make optional
-git clone --depth 1 https://github.com/hlissner/doom-emacs ~/Desktop/tools/terminal/.emacs.d
-~/Desktop/tools/terminal/.emacs.d/bin/doom install
-echo "Done!"
+#add-apt-repository ppa:kelleyk/emacs
+#apt-get update
+#apt-get install emacs26
+# required dependencies
+#apt-get install git ripgrep
+# optional dependencies
+#apt-get install fd-find
+#git clone --depth 1 https://github.com/hlissner/doom-emacs ~/Desktop/tools/terminal/.emacs.d
+#~/Desktop/tools/terminal/.emacs.d/bin/doom install
+#echo "alias doom='~/Desktop/tools/terminal/.emacs.d/bin/doom'" >> .zshrc
+#echo "Done!"
 
 echo ""
-echo "Nvim"
+echo "Nvim --- FIXING THIS NOW"
 ##	Nvim
 sudo apt install gperf luajit luarocks libuv1-dev libluajit-5.1-dev libunibilium-dev libmsgpack-dev libtermkey-dev libvterm-dev libutf8proc-dev
 sudo luarocks build mpack
 sudo luarocks build lpeg
 sudo luarocks build inspect
-
+cd ~/Desktop/tools/terminal
+mkdir nvim
 wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage -O ~/Desktop/tools/terminal/nvim/nvim.appimage
 chmod u+x ~/Desktop/tools/terminal/nvim/nvim.appimage
 ~/Desktop/tools/terminal/nvim/nvim.appimage
